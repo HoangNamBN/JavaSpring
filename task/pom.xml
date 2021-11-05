@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- sử dụng spring boot parent là 1 thư viện có sẵn project chỉ việc
+      kế thừa thì đã được tích hợp các thư viện-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <!--    thông tin của project   -->
+    <groupId>com.todo</groupId>
+    <artifactId>task</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>task</name>
+    <description>task</description>
+
+    <!--  phiên bản java được dùng trong project    -->
+    <properties>
+        <java.version>11</java.version>
+        <!--Thêm dòng này vào project-->
+        <start-class>com.todo.task.TaskApplication</start-class>
+        <!--thêm dòng này để dừng lại việc test khi mới tạo project-->
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
+    <dependencies>
+        <!--mỗi thư viện sẽ là 1 dependency-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- thư viện dùng để hỗ trợ web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--Hỗ trợ viết các test case-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- cấu hình build project cung cấp các thư viện cần thiết để project triển khai trực tiếp
+       mà không phải build trên một web server nào-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
